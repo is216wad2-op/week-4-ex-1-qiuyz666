@@ -26,27 +26,30 @@
                 var email = document.forms["form"]["email"].value;
                 var password = document.forms["form"]["password"].value;
 
-                if (id.length > 10) {
-                    alert("ID must not exceed 10 characters.");
-                    return false;
-                }
+                var msg = "";
 
-                if (email.indexOf("@") === -1) {
-                    alert("Email must contain @.");
-                    return false;
+                if (id.length > 10) {
+                msg += "ID must not contain more than 10 characters\n";
                 }
 
                 if (age < 10 || age > 40) {
-                    alert("age must between 10 and 40.");
-                    return false;
+                msg += "Age must be between 10 and 40\n";
                 }
 
-                if (password.trim() === "") {
-                    alert("Password cannot be empty.");
-                    return false;
+                if (!email.includes("@")) {
+                msg += "Email must contain '@'\n";
                 }
 
+                if (password == "") {
+                msg += "Password must not be empty\n";
+                }
+
+                if (msg != "") {
+                alert(msg);
+                return false;
+                } else {
                 return true;
+                }
             }
      
          </script>
